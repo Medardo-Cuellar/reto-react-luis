@@ -1,7 +1,8 @@
 import Post from "./Post";
 function Posts() {
   return (
-    <Post
+    <main>
+      <Post
       key={2}
       title="Hello World"
       body="This is the body of the post"
@@ -15,6 +16,7 @@ function Posts() {
     author="John Doe"
     date="2021-01-01"
   />
+    </main>
   );
 }
 export default Posts;
