@@ -2,7 +2,7 @@ import Image from "next/image";
 import devToLogo from "../assets/devto.svg";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { login } from "@/api/api";
 
 export default function Enter() {
@@ -12,15 +12,15 @@ export default function Enter() {
     formState: { errors },
     setError,
   } = useForm();
-
+  const router = useRouter();
   async function onSubmit(data) {
     try {
       const token = await login(data.email, data.password);
-      console.log(token);
       if (token) {
         window.localStorage.setItem("token", token);
         toast.success("Bienvenido");
         //redirection goes here
+        router.push("/");
       } else {
         toast.error("Usuario o contraseña incorrectos");
         setError("root.credentials", {
