@@ -1,9 +1,11 @@
-function Button({caption}) {
+import Link from "next/link";
+
+function Button({caption, href}) {
   return (
     
-      <button className="bg-purple-500 p-2 text-white rounded-lg">
+      <Link href={href} className="bg-purple-500 p-2 text-white rounded-lg">
         {caption}
-      </button>
+      </Link>
     
   );
 }

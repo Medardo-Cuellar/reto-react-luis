@@ -1,21 +1,27 @@
 import Post from "./Post";
+import { useEffect, useState } from "react";
+import { getPosts } from "../api/api";
+import { toast } from "sonner";
+import useAuth from "@/hooks/useAuth";
+
 function Posts() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    getPosts().then((posts) => {
+      setPosts(posts);
+    }).catch((error) => {
+      toast.error("Error loading posts", error.message);
+    });
+  }, []);
+  useAuth();
+
   return (
     <>
-      <Post
-      key={2}
-      title="Hello World"
-      body="This is the body of the post"
-      author="John Doe"
-      date="2021-01-01"
-    />
-    <Post
-    key={3}
-    title="Hello World"
-    body="This is the body of the post"
-    author="John Doe"
-    date="2021-01-01"
-  />
+      <h1>Posts</h1>
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
     </>
   );
 }
