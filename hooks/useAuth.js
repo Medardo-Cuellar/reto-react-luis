@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from "next/navigation";
 
 function useAuth() {
     
-    const navigate = useNavigate();
+    const router = useRouter();
     const [token, setToken] = useState("");
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function useAuth() {
         setToken(tkn);
         if (!tkn) {
             toast.error("debes iniciar sesion otra vez 🥹")
-            navigate("/login");
+            router.push("/login");
         }
     }, [navigate]); // en el segundo argumento del useEffect se le pasa un array de dependencias, si se deja vacio se ejecuta una sola vez, si se le pasa una variable se ejecuta cada vez que esa variable cambia
     
