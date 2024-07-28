@@ -22,6 +22,10 @@ npm run dev
 7. mongoose
 8. vercel
 9. render
+
+## link del repositorio del API utilizada
+https://github.com/Medardo-Cuellar/desafio-backend-luis
+
 ## link del despliegue en vercel
 
 ## link del despliegue del api
